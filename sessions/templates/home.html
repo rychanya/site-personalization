@@ -8,5 +8,22 @@
         <div class="header">
             <h1>Игра "Угадай число"</h1>
         </div>
+        {% if number %}
+        Загаданое число {{ number }}
+        {% if is_solve %}
+        Отгадано с {{ counter }} попыток
+        <form action="/reset/" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Загадать еще">
+        </form>
+        {% endif %}
+        {% else %}
+        <form action="/" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit">
+        </form>
+        {% endif %}
+        {% if message %}{{ message }}{% endif %}
     </div>
 {% endblock %}
