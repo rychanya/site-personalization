@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Регистрация{% endblock %}
+{% block title %}Sigin Up{% endblock %}
 
 {% block content %}
     <div class="container">
         <div class="header"></div>
-        <h2>Регистрация</h2>
+        <h2>Sigin Up</h2>
+        <form action="{% url 'siginup' %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Sigin Up">
+        </form>
     </div>
 {% endblock %}

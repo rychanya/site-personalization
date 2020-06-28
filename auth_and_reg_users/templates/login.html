@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Log In{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="header"></div>
+        <h2>Log In</h2>
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Log In">
+        </form>
+        {% if invalid_login %}Неправильный логин или пароль{% endif %}
+    </div>
+{% endblock %}
